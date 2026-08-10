@@ -1,0 +1,3 @@
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM task_submissions;
+SET SQL_SAFE_UPDATES = 1; 

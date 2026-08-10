@@ -1,0 +1,126 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
+    hikari:
+      maximum-pool-size: ${SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE}
+      minimum-idle: ${SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE}
+      idle-timeout: ${SPRING_DATASOURCE_HIKARI_IDLE_TIMEOUT}
+      connection-timeout: ${SPRING_DATASOURCE_HIKARI_CONNECTION_TIMEOUT}
+      max-lifetime: ${SPRING_DATASOURCE_HIKARI_MAX_LIFETIME}
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO}
+    show-sql: ${SPRING_JPA_SHOW_SQL}
+    properties:
+      hibernate:
+        format_sql: ${SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL}
+        dialect: ${SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT}
+        connection:
+          provider_disables_autocommit: ${SPRING_JPA_PROPERTIES_HIBERNATE_CONNECTION_PROVIDER_DISABLES_AUTOCOMMIT}
+    open-in-view: ${SPRING_JPA_OPEN_IN_VIEW}
+  mail:
+    host: ${SPRING_MAIL_HOST}
+    port: ${SPRING_MAIL_PORT}
+    username: ${SPRING_MAIL_USERNAME}
+    password: ${SPRING_MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH}
+          starttls:
+            enable: ${SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE}
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_ID}
+            client-secret: ${SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_GOOGLE_CLIENT_SECRET}
+            scope:
+              - email
+              - profile
+          github:
+            client-id: ${GITHUB_CLIENT_ID}
+            client-secret: ${GITHUB_CLIENT_SECRET}
+            scope:
+              - user:email
+              - read:user
+  websocket:
+    message-broker:
+      relay:
+        host: ${SPRING_WEBSOCKET_MESSAGE_BROKER_RELAY_HOST}
+        port: ${SPRING_WEBSOCKET_MESSAGE_BROKER_RELAY_PORT}
+        login: ${SPRING_WEBSOCKET_MESSAGE_BROKER_RELAY_LOGIN}
+        passcode: ${SPRING_WEBSOCKET_MESSAGE_BROKER_RELAY_PASSCODE}
+
+frontend:
+  base-url: ${FRONTEND_URL}
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}
+  refresh-expiration: ${JWT_REFRESH_EXPIRATION}
+
+server:
+  port: ${SERVER_PORT}
+  servlet:
+    context-path: ${SERVER_SERVLET_CONTEXT_PATH}
+
+logging:
+  level:
+    root: ${LOGGING_LEVEL_ROOT}
+    org:
+      springframework:
+        web: ${LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_WEB}
+        security: ${LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY}
+        orm:
+          jpa: ${LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_ORM_JPA}
+      hibernate:
+        SQL: ${LOGGING_LEVEL_ORG_HIBERNATE_SQL}
+        type:
+          descriptor:
+            sql:
+              BasicBinder: ${LOGGING_LEVEL_ORG_HIBERNATE_TYPE_DESCRIPTOR_SQL_BASICBINDER}
+    com:
+      zaxxer:
+        hikari: ${LOGGING_LEVEL_COM_ZAXXER_HIKARI}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ${MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE}
+  endpoint:
+    health:
+      show-details: ${MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS}
+  metrics:
+    export:
+      prometheus:
+        enabled: ${MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED}
+
+springdoc:
+  api-docs:
+    enabled: ${SPRINGDOC_API_DOCS_ENABLED}
+    path: ${SPRINGDOC_API_DOCS_PATH}
+  swagger-ui:
+    path: ${SPRINGDOC_SWAGGER_UI_PATH}
+    operationsSorter: ${SPRINGDOC_SWAGGER_UI_OPERATIONS_SORTER}
+    tagsSorter: ${SPRINGDOC_SWAGGER_UI_TAGS_SORTER}
+    tryItOutEnabled: ${SPRINGDOC_SWAGGER_UI_TRY_IT_OUT_ENABLED}
+    filter: ${SPRINGDOC_SWAGGER_UI_FILTER}
+    display-request-duration: ${SPRINGDOC_SWAGGER_UI_DISPLAY_REQUEST_DURATION}
+    persist-authorization: ${SPRINGDOC_SWAGGER_UI_PERSIST_AUTHORIZATION}
+    syntax-highlight:
+      activated: ${SPRINGDOC_SWAGGER_UI_SYNTAX_HIGHLIGHT_ACTIVATED}
+      theme: ${SPRINGDOC_SWAGGER_UI_SYNTAX_HIGHLIGHT_THEME}
+
+openai:
+  api:
+    key: ${OPENAI_API_KEY}
+    model: ${OPENAI_MODEL}
+    rate-limit:
+      calls-per-minute: ${OPENAI_RATE_LIMIT_CALLS_PER_MINUTE}
+      max-tokens: ${OPENAI_RATE_LIMIT_MAX_TOKENS}
